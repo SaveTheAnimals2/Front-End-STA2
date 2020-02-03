@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import PrivateRoute from './componets/PrivateRoute';
+import PrivateRoute from './components/PrivateRoute';
+import Login from './components/Login'
 import './App.css';
 
 function App(props) {
@@ -9,7 +10,7 @@ function App(props) {
   return (
     <Router>
       <Switch>
-        {/* <Route exact path = '/' component={Login}/> */}
+        <Route exact path = '/' component={Login}/>
         {/* <PrivateRoute path = '' component={}/> */}
       </Switch>
     </Router>
