@@ -33,7 +33,7 @@ export const addCampaign = () => dispatch =>
     })
 }
 
-export const update = () => dispatch =>
+export const updateCampaign = () => dispatch =>
 {
     dispatch({type: 'UPDATING'});
 
@@ -50,7 +50,7 @@ export const update = () => dispatch =>
     })
 }
 
-export const remove = () => dispatch =>
+export const deleteCampaign = () => dispatch =>
 {
     dispatch({type: 'UPDATING'});
 
