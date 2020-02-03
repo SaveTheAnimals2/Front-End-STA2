@@ -1,7 +1,8 @@
 const initalState = {
     isLoading: false,
     error: '',
-    campaigns: []
+    campaigns: [],
+    isUpdating: false
 };
 
 export const reducer = (state = initalState, action) =>
@@ -18,14 +19,22 @@ export const reducer = (state = initalState, action) =>
                 return {
                     ...state,
                     campaigns: action.payload,
-                    isLoading: false
+                    isLoading: false,
+                    isUpdating: false
                 }
 
             case 'FAILURE':
                 return {
                     ...state,
                     error: action.payload,
-                    isLoading: false
+                    isLoading: false,
+                    isUpdating: false
+                }
+            
+            case 'UPDATING':
+                return {
+                    ...state,
+                    isUpdating: true
                 }
 
         default:

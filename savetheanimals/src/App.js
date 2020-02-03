@@ -5,7 +5,7 @@ import PrivateRoute from './componets/PrivateRoute';
 import './App.css';
 
 function App(props) {
-  const {isLoading, error} = props;
+  const {isLoading, error, campaigns} = props;
   return (
     <Router>
       <Switch>
@@ -21,7 +21,8 @@ const mapStateToProps = state =>
   return {
     isLoading: state.isLoading,
     error: state.error,
-    campaigns: state.campaigns
+    campaigns: state.campaigns,
+    isUpdating: state.isUpdating
   }
 }
 
