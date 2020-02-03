@@ -20,7 +20,8 @@ const mapStateToProps = state =>
 {
   return {
     isLoading: state.isLoading,
-    error: state.error
+    error: state.error,
+    campaigns: state.campaigns
   }
 }
 
