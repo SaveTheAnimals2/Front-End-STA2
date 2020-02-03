@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Signup = props => {
     const [user, setUser] = useState({
@@ -6,6 +6,11 @@ const Signup = props => {
         email: '',
         password: ''
     });
+
+    const handleChanges = event =>
+    {
+
+    }
 
     return (
         <form>
