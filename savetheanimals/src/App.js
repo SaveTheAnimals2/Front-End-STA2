@@ -5,7 +5,7 @@ import PrivateRoute from './componets/PrivateRoute';
 import './App.css';
 
 function App(props) {
-  const {isLoading, error, campaigns} = props;
+  const {isLoading, error, campaigns, isUpdating} = props;
   return (
     <Router>
       <Switch>
