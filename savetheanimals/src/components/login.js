@@ -25,7 +25,7 @@ const Login = props => {
         {
             console.log(response);
             // localStorage.setItem('token', );
-            // history.push('/');
+            // history.push('/dashboard');
         })
         .catch(error => 
         {
