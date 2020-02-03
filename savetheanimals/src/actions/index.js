@@ -8,12 +8,28 @@ export const getCampaigns = () => dispatch =>
     .then(response => 
     {
         console.log(response)
-        dispatch({type: 'SUCCESS', payload: ''});
+        // dispatch({type: 'SUCCESS', payload: ''});
     })
     .catch(error => 
     {
         console.log(error)
-        dispatch({type: 'FAILURE', payload: ''});
+        // dispatch({type: 'FAILURE', payload: ''});
+    })
+}
+
+export const addCampaign = () => dispatch =>
+{
+    dispatch({type: 'GET_CAMPAIGNS'});
+    axiosWithAuth().post('')
+    .then(response =>
+    {
+        console.log(response);
+        // dispatch({type: 'SUCCESS', payload: ''})
+    })
+    .catch(error =>
+    {
+        console.log(error);
+        // dispatch({type: 'FAILURE', payload: ''});
     })
 }
 
@@ -25,12 +41,12 @@ export const update = () => dispatch =>
     .then(response =>
     {
         console.log(response);
-        dispatch({type: 'SUCCESS', payload: ''});
+        // dispatch({type: 'SUCCESS', payload: ''});
     })
     .catch(error =>
     {
         console.log(error);
-        dispatch({type: 'FAILURE', payload: ''});
+        // dispatch({type: 'FAILURE', payload: ''});
     })
 }
 
@@ -47,6 +63,6 @@ export const remove = () => dispatch =>
     .catch(error =>
     {
         console.log(error);
-        dispatch({type: 'FAILURE'});
+        // dispatch({type: 'FAILURE', payload: ''});
     })
 }
