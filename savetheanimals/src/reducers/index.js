@@ -15,27 +15,27 @@ export const reducer = (state = initalState, action) =>
                 isLoading: true
             }
 
-            case 'SUCCESS':
-                return {
-                    ...state,
-                    campaigns: action.payload,
-                    isLoading: false,
-                    isUpdating: false
-                }
+        case 'SUCCESS':
+            return {
+                ...state,
+                campaigns: action.payload,
+                isLoading: false,
+                isUpdating: false
+            }
 
-            case 'FAILURE':
-                return {
-                    ...state,
-                    error: action.payload,
-                    isLoading: false,
-                    isUpdating: false
-                }
+        case 'FAILURE':
+            return {
+                ...state,
+                error: action.payload,
+                isLoading: false,
+                isUpdating: false
+            }
             
-            case 'UPDATING':
-                return {
-                    ...state,
-                    isUpdating: true
-                }
+        case 'UPDATING':
+            return {
+                ...state,
+                isUpdating: true
+            }
 
         default:
             return state;
