@@ -29,7 +29,7 @@ export const addCampaign = campaign => dispatch =>
     .catch(error =>
     {
         console.log(error);
-        // dispatch({type: 'FAILURE', payload: ''});
+        dispatch({type: 'FAILURE', payload: 'Something went wrong. Try again'});
     })
 }
 
