@@ -1,0 +1,28 @@
+
+
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #ebeeee;
+    background-image: url('./images/deer.jpg');
+    background-color: #cccccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.App {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .login-form {
+    width: 460px;
+    margin: auto 100px;
+    padding: 32px;
+    /* font-weight: bold; */
+    background-color: rgba(171, 139, 112, 0.8);
+    box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, 0.1);
+  }

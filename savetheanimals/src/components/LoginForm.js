@@ -1,4 +1,7 @@
 import React, {useState} from 'react';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import Signup from './SignupForm';
+
 import axios from 'axios';
 
 const LoginForm = props => {
@@ -34,20 +37,35 @@ const LoginForm = props => {
     }
 
     return (
-        <form onSubmit={login}>
-            <div>
+        <div className='login-form'>
+            <form onSubmit={login}>
+            <h1>Save the Animals</h1>
+                <div>
                 <label htmlFor='name'>Username </label>
                 <input id='name' type='text' name='username' placeholder='Full Name' onChange={handleChange} value={user.username}/>
-            </div>
-            
-            <div>
+                </div>
+                <div>
                 <label htmlFor='password'>Password </label> 
                 <input id='password' type='password' name='password' placeholder='Full Name' onChange={handleChange} value={user.password}/>
-            </div>
+                </div>
+                <button type='login'>Login</button>
 
-            <button type='login'>Login</button>
+                <div>
+                New User? Sign up <Link to='/sign-up'>here</Link>!
+                </div>
+            </form>
 
-        </form>
+     <Router>
+        <Switch>
+          <Route exact path='/sign-up'>
+              <Signup component= {Signup} />
+              </Route>
+         
+        </Switch>
+     </Router>
+
+        </div>
+        
     )
 };
 

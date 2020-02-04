@@ -7,6 +7,7 @@ const SignupForm = props => {
         name: '',
         email: '',
         password: '',
+       
     });
 
     const {history} = props;
@@ -17,6 +18,8 @@ const SignupForm = props => {
             [event.target.name]: event.target.value
         })
     }
+
+  
 
     const register = event => {
 

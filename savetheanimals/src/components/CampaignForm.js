@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Campaign from './Campaign';
 
 const CampaignForm = props => {
@@ -12,7 +12,10 @@ const CampaignForm = props => {
         urgency: '',
         goal: '',
         deadline: '',
+        itemize: '',
     });
+
+
 
     const handleChanges = e => {
         setCampaign({...campaign, [e.target.name]: e.target.value});
@@ -22,7 +25,7 @@ const CampaignForm = props => {
         e.preventDefault();
         console.log(e, props);
         props.addNewCampaign(campaign);
-        setCampaign({name: '', email: '', role: ''});  
+        setCampaign({name: '', locaton: '', species: '', description: '', urgency: '', goal: '', deadline: '', itemize: ''});  
     };
 
     return (
@@ -73,6 +76,7 @@ const CampaignForm = props => {
 
             <div>
                 <label htmlFor='itemize'>Where is the money going towards? </label>
+                <textarea id='itemize' type='itemize' name='itemize'onChange={handleChanges} value={campaign.itemize}/>
             </div>
 
             <button type='submit'>Add Campaign</button>
