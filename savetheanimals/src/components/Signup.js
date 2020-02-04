@@ -25,12 +25,12 @@ const Signup = props => {
     {
         event.preventDefault();
         console.log(user);
-        // axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/register', user)
-        // .then(response =>
-        // {
-        //     // localStorage.setItem('token', );
-        //     // history.push('/');
-        // })
+        axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/register', user)
+        .then(response =>
+        {
+            // localStorage.setItem('token', );
+            history.push('/login');
+        })
 
     }
 
