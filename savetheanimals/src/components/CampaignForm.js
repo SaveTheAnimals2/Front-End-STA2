@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Campaign = props => {
     const [campaign, setCampaign] = useState({
@@ -13,7 +13,7 @@ const Campaign = props => {
     });
 
     const handleChanges = e => {
-        setMember({...campaign, [e.target.name]: e.target.value});
+        setCampaign({...campaign, [e.target.name]: e.target.value});
     };
 
     return (
@@ -35,7 +35,7 @@ const Campaign = props => {
 
             <div>
                 <label htmlFor='description'>Description of what your campaign will do </label> 
-                <textarea id='desc' type='text' name='desc' onChange={handleChanges}/>
+                <textarea id='description' type='text' name='description' onChange={handleChanges}/>
             </div>
 
             <div>
