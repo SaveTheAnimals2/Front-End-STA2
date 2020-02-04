@@ -3,7 +3,6 @@ const initalState = {
     error: '',
     campaigns: [],
     isUpdating: false,
-    isAdmin: false,
     username: ''
 };
 
@@ -20,8 +19,8 @@ export const reducer = (state = initalState, action) =>
         case 'SUCCESS':
             return {
                 ...state,
-                campaigns: action.payload,
                 isLoading: false,
+                campaigns: action.payload,
                 isUpdating: false
             }
 
@@ -37,11 +36,6 @@ export const reducer = (state = initalState, action) =>
             return {
                 ...state,
                 isUpdating: true
-            }
-        case 'SET_ADMIN':
-            return {
-                ...state,
-                isAdmin: action.payload
             }
         case 'SET_USERNAME':
             return{

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {addCampaign} from '../actions';
 
 const Campaign = props => {
@@ -74,15 +75,15 @@ const Campaign = props => {
 
             <button type='submit'>Add Campaign</button>
 
-
         </form>
+
     )
 };
 
 const mapPropsToState = state =>
 {
     return{
-        state
+        isLoading: state.isLoading
     }
 }
 

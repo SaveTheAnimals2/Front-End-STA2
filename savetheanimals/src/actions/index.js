@@ -23,7 +23,8 @@ export const addCampaign = campaign => dispatch =>
     axiosWithAuth().post('/campaigns', campaign)
     .then(response =>
     {
-       window.location.href= '/dashboard';
+        dispatch({type: 'SUCCESS'});
+        window.location.href = '/dashboard';
     })
     .catch(error =>
     {
