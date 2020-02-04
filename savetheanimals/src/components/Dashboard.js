@@ -12,7 +12,7 @@ function Dashboard(props)
             <div className='campaign-container'>
               {campaigns === undefined || campaigns.length === 0 ? 
               <p>Let's add a campign to see it here</p> : 
-              !isLoading &&(
+              !isLoading && !isUpdating &&(
                 <Campaign campaigns={campaigns}/>
               )}
             </div>
