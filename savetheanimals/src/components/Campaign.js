@@ -4,7 +4,9 @@ const Campaign = props => {
     
     return (
         <div>
-            {props.campaigns.map(campaign => (
+            <h1>Campaign</h1>
+
+            {/* {props.campaigns.map(campaign => (
                 <div key={campaign.id}>
                     <h2>{campaign.name}</h2>
                     <p>{campaign.location}</p>
@@ -13,9 +15,8 @@ const Campaign = props => {
                     <p>{campaign.urgency}</p>
                     <p>{campaign.goal}</p>
                     <p>{campaign.deadline}</p>
-                   
                 </div>
-            ))}
+            ))} */}
         </div>
     );
 };

@@ -1,23 +1,33 @@
 import React from 'react';
 
 const CampaignForm = props => {
-    const [campaign, setCampaign] = useState({
-        name: '',
-        location: '',
-        species: '',
-        description: '',
-        urgency: '',
-        goal: '',
-        deadline: '',
-
-    });
+    
+    // TODO
+    // const [campaign, setCampaign] = useState({
+    //     name: '',
+    //     location: '',
+    //     species: '',
+    //     description: '',
+    //     urgency: '',
+    //     goal: '',
+    //     deadline: '',
+    // });
 
     const handleChanges = e => {
-        setCampaign({...campaign, [e.target.name]: e.target.value});
+        // setCampaign({...campaign, [e.target.name]: e.target.value});
+    };
+
+    const submitForm = e => {
+        e.preventDefault();
+        console.log(e, props);
+        // props.addNewCampaign(campaign);
+        // setCampaign({name: '', email: '', role: ''});  
     };
 
     return (
         <form>
+            <h1>Campaign Form</h1>
+
             <div>
                 <label htmlFor='name'>Campaign Name </label>
                 <input id='name' type='text' name='name' placeholder='Campaign Name' onChange={handleChanges}/>
