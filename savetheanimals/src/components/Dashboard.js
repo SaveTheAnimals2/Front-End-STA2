@@ -5,7 +5,7 @@ import Campaign from './Campaign';
 
 function Dashboard(props)
 {
-  const {isLoading, error, campaigns, isUpdating, getCampaigns, addCampaign, updateCampaign, deleteCampaign} = props;
+  const {isLoading, error, campaigns, isUpdating, getCampaigns, addCampaign, updateCampaign, deleteCampaign, history} = props;
     return(
         <div className='user-dashboard'>
             <h1>Welcome to your dashboard</h1>
@@ -16,6 +16,7 @@ function Dashboard(props)
                 <Campaign campaigns={campaigns}/>
               )}
             </div>
+            <button onClick={() => history.push('/add-campaign')}>Add a Campaign</button>
         </div>
     );
 }
