@@ -10,11 +10,6 @@ function Dashboard(props)
 
   const history = useHistory();
 
-  const handleClick = () =>
-  {
-    history.push('/add-campaign')
-  }
-
   return (
     <div className='user-dashboard'>
       <h1>Welcome to your dashboard</h1>
