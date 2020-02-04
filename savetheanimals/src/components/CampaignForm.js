@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Campaign = props => {
+const CampaignForm = props => {
     const [campaign, setCampaign] = useState({
         name: '',
         location: '',
@@ -13,7 +13,7 @@ const Campaign = props => {
     });
 
     const handleChanges = e => {
-        setMember({...campaign, [e.target.name]: e.target.value});
+        setCampaign({...campaign, [e.target.name]: e.target.value});
     };
 
     return (
@@ -69,4 +69,4 @@ const Campaign = props => {
     )
 };
 
-export default Campaign;
+export default CampaignForm;
