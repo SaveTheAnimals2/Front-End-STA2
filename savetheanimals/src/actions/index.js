@@ -71,3 +71,8 @@ export const setIsAdmin = isAdmin => dispatch =>
 {
     dispatch({type: 'SET_ADMIN', payload: isAdmin});
 }
+
+export const setUsername = username => dispatch =>
+{
+    dispatch({type: 'SET_USERNAME', payload: username});
+}

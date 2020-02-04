@@ -14,7 +14,7 @@ const Signup = props =>
 
     const [isOrganization, setIsOrganization] = useState(false);
 
-    const { history, setIsAdmin } = props;
+    const { history } = props;
 
     const handleChanges = event => 
     {
@@ -30,7 +30,6 @@ const Signup = props =>
         axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/register', user)
             .then(response =>
             {
-                setIsAdmin(true);
                 history.push('/login');
             })
     }

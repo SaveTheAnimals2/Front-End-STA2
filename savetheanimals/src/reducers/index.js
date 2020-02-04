@@ -3,7 +3,8 @@ const initalState = {
     error: '',
     campaigns: [],
     isUpdating: false,
-    isAdmin: false
+    isAdmin: false,
+    username: ''
 };
 
 export const reducer = (state = initalState, action) =>
@@ -41,6 +42,11 @@ export const reducer = (state = initalState, action) =>
             return {
                 ...state,
                 isAdmin: action.payload
+            }
+        case 'SET_USERNAME':
+            return{
+                ...state,
+                username: action.payload
             }
         default:
             return state;

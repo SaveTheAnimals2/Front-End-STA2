@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCampaigns, addCampaign, updateCampaign, deleteCampaign } from '../actions';
@@ -6,13 +6,18 @@ import Campaign from './Campaign';
 
 function Dashboard(props) 
 {
-  const { isLoading, error, campaigns, isUpdating, getCampaigns, addCampaign, updateCampaign, deleteCampaign, isAdmin } = props;
+  const { isLoading, error, campaigns, isUpdating, getCampaigns, addCampaign, updateCampaign, deleteCampaign, isAdmin, username } = props;
 
   const history = useHistory();
 
+  useEffect(() =>
+  {
+
+  }, [])
+
   return (
     <div className='user-dashboard'>
-      <h1>Welcome to your dashboard</h1>
+      <h1>Welcome {username} to your dashboard</h1>
       <div className='campaign-container'>
         {campaigns === undefined || campaigns.length === 0 ?
           isAdmin &&(<p>Let's add a campaign to see it here</p>) :
@@ -20,9 +25,12 @@ function Dashboard(props)
             <Campaign campaigns={campaigns} />
           )}
       </div>
-      {isAdmin &&(
-         <button onClick={() => history.push('/add-campaign')}>Add a Campaign</button>
-      )}
+      {/* {isAdmin &&(
+         <button onClick={() => history.push(
+           '/add-campaign')}>Add a Campaign</button>
+      )} */}
+
+  <button onClick={() => history.push('/add-campaign')}>Add a Campaign</button>
     </div>
   );
 }
@@ -33,7 +41,8 @@ const mapStateToProps = state => {
     error: state.error,
     campaigns: state.campaigns,
     isUpdating: state.isUpdating,
-    isAdmin: state.isAdmin
+    username: state.username
+    // isAdmin: state.isAdmin
   }
 }
 
