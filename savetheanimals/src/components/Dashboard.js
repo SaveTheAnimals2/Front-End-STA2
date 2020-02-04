@@ -15,7 +15,7 @@ function Dashboard(props)
       <h1>Welcome to your dashboard</h1>
       <div className='campaign-container'>
         {campaigns === undefined || campaigns.length === 0 ?
-          <p>Let's add a campign to see it here</p> :
+          <p>Let's add a campaign to see it here</p> :
           !isLoading && !isUpdating && (
             <Campaign campaigns={campaigns} />
           )}
