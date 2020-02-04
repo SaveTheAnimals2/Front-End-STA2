@@ -66,3 +66,8 @@ export const deleteCampaign = () => dispatch =>
         // dispatch({type: 'FAILURE', payload: ''});
     })
 }
+
+export const setIsAdmin = isAdmin => dispatch =>
+{
+    dispatch({type: 'SET_ADMIN', payload: isAdmin});
+}

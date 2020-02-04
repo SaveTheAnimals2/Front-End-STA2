@@ -2,7 +2,8 @@ const initalState = {
     isLoading: false,
     error: '',
     campaigns: [],
-    isUpdating: false
+    isUpdating: false,
+    isAdmin: false
 };
 
 export const reducer = (state = initalState, action) =>
@@ -36,7 +37,11 @@ export const reducer = (state = initalState, action) =>
                 ...state,
                 isUpdating: true
             }
-
+        case 'SET_ADMIN':
+            return {
+                ...state,
+                isAdmin: action.payload
+            }
         default:
             return state;
     }

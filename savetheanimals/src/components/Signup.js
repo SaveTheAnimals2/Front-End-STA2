@@ -1,7 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import { setIsAdmin } from '../actions';
+import {connect} from 'react-redux';
 
-const Signup = props => {
+const Signup = props => 
+{
     const [user, setUser] = useState({
         username: '',
         email: '',
@@ -11,9 +14,9 @@ const Signup = props => {
 
     const [isOrganization, setIsOrganization] = useState(false);
 
-    const {history} = props;
+    const { history, setIsAdmin } = props;
 
-    const handleChanges = event =>
+    const handleChanges = event => 
     {
         setUser({
             ...user,
@@ -21,51 +24,59 @@ const Signup = props => {
         })
     }
 
-    const register = event =>
+    const registerAdmin = event => 
     {
         event.preventDefault();
-        console.log(user);
+        axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/register', user)
+            .then(response =>
+            {
+                setIsAdmin(true);
+                history.push('/login');
+            })
+    }
+
+    const registerSupporter = event =>
+    {
+        event.preventDefault()
         axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/register', user)
         .then(response =>
         {
-            // localStorage.setItem('token', );
             history.push('/login');
         })
-
     }
 
-    const handleClick = event =>
+    const handleClick = event => 
     {
         event.preventDefault();
         setIsOrganization(true);
     }
 
     return (
-        <form onSubmit={register}>
+        <form>
             <div>
                 <label htmlFor='name'>UserName </label>
-                <input id='name' type='text' name='username' placeholder='username' onChange={handleChanges} value={user.username}/>
+                <input id='name' type='text' name='username' placeholder='username' onChange={handleChanges} value={user.username} />
             </div>
 
             <div>
                 <label htmlFor='email'>Email </label>
-                <input id='email' type='email' name='email' placeholder='email@email.com' onChange={handleChanges} value={user.email}/>
+                <input id='email' type='email' name='email' placeholder='email@email.com' onChange={handleChanges} value={user.email} />
             </div>
-            
+
             <div>
-                <label htmlFor='password'>Password </label> 
-                <input id='password' type='password' name='password' placeholder='password' onChange={handleChanges} value={user.password}/>
+                <label htmlFor='password'>Password </label>
+                <input id='password' type='password' name='password' placeholder='password' onChange={handleChanges} value={user.password} />
             </div>
 
             <button onClick={handleClick}>I'm an Organization</button>
             {isOrganization && (
-            <div>
-                <label htmlFor='organization'>Organization </label> 
-                <input id='organizaton' type='text' name='organizationName' placeholder='organization name' onChange={handleChanges} value={user.organizationName}/>
-                <button type='submit'>Submit</button>
-            </div>
+                <div>
+                    <label htmlFor='organization'>Organization </label>
+                    <input id='organizaton' type='text' name='organizationName' placeholder='organization name' onChange={handleChanges} value={user.organizationName} />
+                    <button onClick={registerAdmin}>Submit</button>
+                </div>
             )}
-            <button type='submit'>I'm a Supporter</button>
+            <button onClick={registerSupporter}>I'm a Supporter</button>
 
         </form>
     )

@@ -6,7 +6,7 @@ import Campaign from './Campaign';
 
 function Dashboard(props) 
 {
-  const { isLoading, error, campaigns, isUpdating, getCampaigns, addCampaign, updateCampaign, deleteCampaign } = props;
+  const { isLoading, error, campaigns, isUpdating, getCampaigns, addCampaign, updateCampaign, deleteCampaign, isAdmin } = props;
 
   const history = useHistory();
 
@@ -15,12 +15,14 @@ function Dashboard(props)
       <h1>Welcome to your dashboard</h1>
       <div className='campaign-container'>
         {campaigns === undefined || campaigns.length === 0 ?
-          <p>Let's add a campaign to see it here</p> :
+          isAdmin &&(<p>Let's add a campaign to see it here</p>) :
           !isLoading && !isUpdating && (
             <Campaign campaigns={campaigns} />
           )}
       </div>
-      <button onClick={() => history.push('/add-campaign')}>Add a Campaign</button>
+      {isAdmin &&(
+         <button onClick={() => history.push('/add-campaign')}>Add a Campaign</button>
+      )}
     </div>
   );
 }
@@ -30,7 +32,8 @@ const mapStateToProps = state => {
     isLoading: state.isLoading,
     error: state.error,
     campaigns: state.campaigns,
-    isUpdating: state.isUpdating
+    isUpdating: state.isUpdating,
+    isAdmin: state.isAdmin
   }
 }
 
