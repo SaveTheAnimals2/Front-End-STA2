@@ -7,6 +7,10 @@ const Signup = props => {
         password: ''
     });
 
+    const handleChanges = e => {
+        setUser({...user, [e.target.name]: e.target.value});
+    };
+
     return (
         <form>
             <div>
