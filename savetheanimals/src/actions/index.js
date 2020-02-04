@@ -4,23 +4,22 @@ export const getCampaigns = () => dispatch =>
 {
     dispatch({type: 'GET_CAMPAIGNS'});
 
-    axiosWithAuth().get('')
+    axiosWithAuth().get('/campaigns')
     .then(response => 
     {
-        console.log(response)
-        // dispatch({type: 'SUCCESS', payload: ''});
+        dispatch({type: 'SUCCESS', payload: response.data});
     })
     .catch(error => 
     {
         console.log(error)
-        // dispatch({type: 'FAILURE', payload: ''});
+        dispatch({type: 'FAILURE', payload: 'Something went wrong. Try again'});
     })
 }
 
 export const addCampaign = () => dispatch =>
 {
     dispatch({type: 'GET_CAMPAIGNS'});
-    axiosWithAuth().post('')
+    axiosWithAuth().post('/campaigns')
     .then(response =>
     {
         console.log(response);

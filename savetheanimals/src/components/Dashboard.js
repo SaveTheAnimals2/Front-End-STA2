@@ -12,7 +12,7 @@ function Dashboard(props)
 
   useEffect(() =>
   {
-    
+    getCampaigns(); 
   }, [])
 
   return (
@@ -20,15 +20,11 @@ function Dashboard(props)
       <h1>Welcome {username} to your dashboard</h1>
       <div className='campaign-container'>
         {campaigns === undefined || campaigns.length === 0 ?
-          isAdmin &&(<p>Let's add a campaign to see it here</p>) :
+          <p>Let's add a campaign to see it here</p> :
           !isLoading && !isUpdating && (
             <Campaign campaigns={campaigns} />
           )}
       </div>
-      {/* {isAdmin &&(
-         <button onClick={() => history.push(
-           '/add-campaign')}>Add a Campaign</button>
-      )} */}
 
   <button onClick={() => history.push('/add-campaign')}>Add a Campaign</button>
     </div>
