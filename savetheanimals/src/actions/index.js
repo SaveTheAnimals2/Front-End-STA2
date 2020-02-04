@@ -16,14 +16,14 @@ export const getCampaigns = () => dispatch =>
     })
 }
 
-export const addCampaign = () => dispatch =>
+export const addCampaign = campaign => dispatch =>
 {
+    console.log(campaign);
     dispatch({type: 'GET_CAMPAIGNS'});
-    axiosWithAuth().post('/campaigns')
+    axiosWithAuth().post('/campaigns', campaign)
     .then(response =>
     {
-        console.log(response);
-        // dispatch({type: 'SUCCESS', payload: ''})
+       window.location.href= '/dashboard';
     })
     .catch(error =>
     {

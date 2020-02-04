@@ -1,19 +1,19 @@
 import React, {useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getCampaigns, addCampaign, updateCampaign, deleteCampaign } from '../actions';
+import { getCampaigns, updateCampaign, deleteCampaign } from '../actions';
 import Campaign from './Campaign';
 
 function Dashboard(props) 
 {
-  const { isLoading, error, campaigns, isUpdating, getCampaigns, addCampaign, updateCampaign, deleteCampaign, isAdmin, username } = props;
+  const { isLoading, error, campaigns, isUpdating, getCampaigns, updateCampaign, deleteCampaign, isAdmin, username } = props;
 
   const history = useHistory();
 
   useEffect(() =>
   {
     getCampaigns(); 
-  }, [])
+  }, [getCampaigns])
 
   return (
     <div className='user-dashboard'>
@@ -26,7 +26,7 @@ function Dashboard(props)
           )}
       </div>
 
-  <button onClick={() => history.push('/add-campaign')}>Add a Campaign</button>
+    <button onClick={() => history.push('/add-campaign')}>Add a Campaign</button>
     </div>
   );
 }
@@ -43,4 +43,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { getCampaigns, addCampaign, updateCampaign, deleteCampaign })(Dashboard);
+export default connect(mapStateToProps, { getCampaigns, updateCampaign, deleteCampaign })(Dashboard);
