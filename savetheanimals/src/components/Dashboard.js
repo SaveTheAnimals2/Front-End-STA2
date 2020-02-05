@@ -6,7 +6,7 @@ import Campaign from './Campaign';
 
 function Dashboard(props) 
 {
-  const { isLoading, error, campaigns, isUpdating, getCampaigns, updateCampaign, deleteCampaign, isAdmin, username } = props;
+  const { isLoading, campaigns, isUpdating, getCampaigns, updateCampaign, deleteCampaign, username } = props;
 
   const history = useHistory();
 
@@ -38,7 +38,6 @@ const mapStateToProps = state => {
     campaigns: state.campaigns,
     isUpdating: state.isUpdating,
     username: state.username
-    // isAdmin: state.isAdmin
   }
 }
 

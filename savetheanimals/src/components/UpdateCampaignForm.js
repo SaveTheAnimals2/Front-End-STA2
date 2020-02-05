@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import Campaign from './Campaign';
 import {connect} from 'react-redux';
-import {Link, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 import {updateCampaign} from '../actions';
 

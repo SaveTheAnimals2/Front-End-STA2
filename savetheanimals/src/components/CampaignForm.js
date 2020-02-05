@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
-import Campaign from './Campaign';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import {addCampaign} from '../actions';
 
 const CampaignForm = props => {
@@ -15,7 +13,7 @@ const CampaignForm = props => {
         urgencyLevel: '',
         fundingGoals: '',
         deadline: '',
-        itemize: '',
+        // itemize: '',
     });
 
     //Need to put more input boxes in itemize
@@ -67,12 +65,12 @@ const CampaignForm = props => {
                 </select>
             </div>
 
-            <div>
+            {/* <div>
                 <label htmlFor='itemize'>Where is the money going towards? </label>
-                <textarea id='itemize' type='itemize' name='itemize'onChange={handleChanges} value={campaign.itemize}/>
+                <textarea id='itemize' type='itemize' name='itemize'onChange={handleChanges} value={campaign.itemize}/> */}
             {/* <button type='submit'>I'm an Organization</button>
             <button type='submit'>I'm a Supporter</button> */}
-            </div>
+            {/* </div> */}
 
             <div>
                 <label htmlFor='fundingGoals'>Goal Amount </label> 
@@ -81,7 +79,7 @@ const CampaignForm = props => {
 
             <div>
                 <label htmlFor='deadline'>Deadline </label> 
-                <input id='deadline' type='date' name='deadline' placeholder='MM/DD/YYYY' onChange={handleChanges} value={campaign.deadline}/>
+                <input id='deadline' type='text' name='deadline' placeholder='MM/DD/YYYY' onChange={handleChanges} value={campaign.deadline}/>
             </div>
 
             <button type='submit'>Add Campaign</button>
@@ -94,7 +92,7 @@ const CampaignForm = props => {
 const mapPropsToState = state =>
 {
     return{
-        isLoading: state.isLoading
+        state
     }
 }
 
