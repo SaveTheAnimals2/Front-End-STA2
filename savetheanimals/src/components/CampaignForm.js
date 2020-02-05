@@ -18,6 +18,8 @@ const CampaignForm = props => {
         itemize: '',
     });
 
+    //Need to put more input boxes in itemize
+    //Need to add axios
 
     const {addCampaign} = props;
 
@@ -96,4 +98,4 @@ const mapPropsToState = state =>
     }
 }
 
-export default connect(mapPropsToState, {addCampaign})(Campaign);
+export default connect(mapPropsToState, {addCampaign})(CampaignForm);
