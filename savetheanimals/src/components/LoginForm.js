@@ -37,7 +37,7 @@ const LoginForm = props => {
     return (
         <div className='login-form'>
             <form onSubmit={login}>
-                <h1>Save the Animals</h1>
+                <h1 className='save-the-animals'>Save the Animals</h1>
                 <div>
                     <label htmlFor='name'>Username </label>
                     <input id='name' type='text' name='username' placeholder='Full Name' onChange={handleChange} value={user.username} />

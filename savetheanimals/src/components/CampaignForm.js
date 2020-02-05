@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { addCampaign } from "../actions";
 
 
-// import './CampaignForm.css';
+import './CampaignForm.css';
 
 const CampaignForm = props => {
   const [campaign, setCampaign] = useState({
@@ -38,7 +38,9 @@ const CampaignForm = props => {
   };
 
   return (
-    <form onSubmit={handleSubmitForm}>
+    <div className='campaign-form'>
+      <div className='campaign-formbox'>
+      <form onSubmit={handleSubmitForm}>
       <h1>Add a New Campaign</h1>
       <div>
         <label htmlFor="title">Campaign Name </label>
@@ -75,7 +77,7 @@ const CampaignForm = props => {
       </div>
       <div>
         <label htmlFor="description">
-          Description of what your campaign will do{" "}
+          What will your campaign do?{" "}
         </label>
         <textarea
           id="description"
@@ -207,6 +209,8 @@ const CampaignForm = props => {
 
       <button type="submit">Add Campaign</button>
     </form>
+  </div>
+</div>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
@@ -118,6 +119,10 @@ const SignupForm = props => {
         <div>
           <button type="submit">I'm an Organization</button>
         </div>
+
+        <div>
+                    Already a member? Login <Link to='/'>here</Link>!
+                </div>
 
       </form>
     </div>
