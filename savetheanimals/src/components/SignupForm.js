@@ -10,11 +10,8 @@ const SignupForm = props => {
     name: "",
     email: "",
     password: "",
+    password2: "",
   });
-
-  const [passwordError, setPasswordError] = useState({
-      passwordErrorStatus: ""
-  })
 
   const { history } = props;
 
@@ -24,24 +21,19 @@ const SignupForm = props => {
       ...user,
       [event.target.name]: event.target.value
     });
+
+    console.log(user)
   };
 
   const register = event => {
     event.preventDefault();
-
-    if (user.password.length <= 8) {
-        setPasswordError(true)
-    } else {
-        setPasswordError(false);
-    }
-
-          setUser({name: "", email: "", password: ""})
-
+    
     axios.post("", user).then(response => {
-      console.log(response);
-      // localStorage.setItem('token', );
-      // history.push('/');
+        console.log(response);
+        // localStorage.setItem('token', );
+        // history.push('/');
         console.log(user);
+        // setUser({name: "", email: "", password: ""})
     });
   };
 
@@ -85,7 +77,20 @@ const SignupForm = props => {
               onChange={handleChanges}
               value={user.password}
             />
-            { passwordError === true ? 'Password too short' : ''}
+            { user.password.length > 0 && user.password.length < 8 ? 'Password too short' : ''}
+          </div>
+
+          <div>
+            <label htmlFor="password2">Password</label>
+            <input
+              id="password2"
+              type="password"
+              name="password2"
+              placeholder="re-enter password"
+              onChange={handleChanges}
+              value={user.password2}
+            />
+            { user.password !== user.password2 ? 'Password does not match' : ''}
           </div>
 
           <div>
