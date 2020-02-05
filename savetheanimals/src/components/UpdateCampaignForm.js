@@ -87,13 +87,13 @@ const UpdateCampaignForm = props => {
                     <option>Critical</option>
                 </select>
             </div>
-
+{/* 
             <div>
                 <label htmlFor='itemize'>Where is the money going towards? </label>
-                <textarea id='itemize' type='itemize' name='itemize'onChange={handleChanges} value={campaign.itemize}/>
+                <textarea id='itemize' type='itemize' name='itemize'onChange={handleChanges} value={campaign.itemize}/> */}
             {/* <button type='submit'>I'm an Organization</button>
             <button type='submit'>I'm a Supporter</button> */}
-            </div>
+            {/* </div> */}
 
             <div>
                 <label htmlFor='fundingGoals'>Goal Amount </label> 
@@ -102,7 +102,7 @@ const UpdateCampaignForm = props => {
 
             <div>
                 <label htmlFor='deadline'>Deadline </label> 
-                <input id='deadline' type='date' name='deadline' placeholder='MM/DD/YYYY' onChange={handleChanges} value={campaign.deadline}/>
+                <input id='deadline' type='text' name='deadline' placeholder='MM/DD/YYYY' onChange={handleChanges} value={campaign.deadline}/>
             </div>
 
             <button type='submit'>Update Campaign</button>
@@ -115,7 +115,7 @@ const UpdateCampaignForm = props => {
 const mapPropsToState = state =>
 {
     return{
-        isLoading: state.isLoading
+        state
     }
 }
 
