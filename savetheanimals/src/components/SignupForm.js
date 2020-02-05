@@ -29,8 +29,14 @@ const SignupForm = props => {
 
   const register = event => {
     event.preventDefault();
+    const loginUser = {
+      username: user.username,
+      organizationName: user.organizationName,
+      email: user.email,
+      password: user.password
+    };
     
-    axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/register', user)
+    axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/register', loginUser)
       .then(response => {
         history.push('/login');
       })
