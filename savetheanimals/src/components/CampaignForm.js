@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
+import {useHistory} from 'react-router';
 import {addCampaign} from '../actions';
 
 const CampaignForm = props => {
     
-    
+    const history = useHistory();
     const [campaign, setCampaign] = useState({
         title: '',
         location: '',
@@ -28,7 +29,8 @@ const CampaignForm = props => {
     const handleSubmitForm = event =>
     {
         event.preventDefault();
-        addCampaign(campaign);
+        addCampaign(campaign)
+        .then(() => history.push('/dashboard'))
     }
 
     return (
