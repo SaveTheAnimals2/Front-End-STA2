@@ -9,7 +9,7 @@ const Campaign = props => {
     const history = useHistory();
     return (
         <div>
-            <h1>Campaign</h1>
+            <h2>Your Campaigns</h2>
             <div className='campaign-container'>
             {props.campaigns.map(campaign => (
                 <div className='campaign-card' key={campaign.id}>

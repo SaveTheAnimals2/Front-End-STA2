@@ -2,6 +2,7 @@
     text-align: center;
     background-color: rgba(217, 209, 198, 0.5);
     box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, 0.1);
+    color: black;
 }
 .save-the-animals{
     font-family: 'Kaushan Script', cursive;
