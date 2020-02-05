@@ -25,7 +25,7 @@ const CampaignForm = props => {
         setCampaign({...campaign, [e.target.name]: e.target.value});
     };
 
-    const handleSubmit = event =>
+    const handleSubmitForm = event =>
     {
         event.preventDefault();
         addCampaign(campaign);
@@ -70,6 +70,7 @@ const CampaignForm = props => {
                 <textarea id='itemize' type='itemize' name='itemize'onChange={handleChanges} value={campaign.itemize}/>
             {/* <button type='submit'>I'm an Organization</button>
             <button type='submit'>I'm a Supporter</button> */}
+            </div>
 
             <div>
                 <label htmlFor='fundingGoals'>Goal Amount </label> 
