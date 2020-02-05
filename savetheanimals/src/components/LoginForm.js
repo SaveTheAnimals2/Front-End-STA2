@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import Signup from './SignupForm';
+import SignupForm from './SignupForm';
 
 import axios from 'axios';
 
@@ -48,22 +48,12 @@ const LoginForm = props => {
                 <label htmlFor='password'>Password </label> 
                 <input id='password' type='password' name='password' placeholder='Full Name' onChange={handleChange} value={user.password}/>
                 </div>
-                <button type='login'>Login</button>
+                <button className='login-button' type='login'>Login</button>
 
                 <div>
                 New User? Sign up <Link to='/sign-up'>here</Link>!
                 </div>
             </form>
-
-     <Router>
-        <Switch>
-          <Route exact path='/sign-up'>
-              <Signup component= {Signup} />
-              </Route>
-         
-        </Switch>
-     </Router>
-
         </div>
         
     )

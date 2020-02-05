@@ -1,13 +1,17 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import { useForm } from "react-hook-form";
+
+import './SignUp.css';
 
 const SignupForm = props => {
+
+console.log("!", props)
 
     const [user, setUser] = useState({
         name: '',
         email: '',
         password: '',
-       
     });
 
     const {history} = props;
@@ -19,8 +23,6 @@ const SignupForm = props => {
         })
     }
 
-  
-
     const register = event => {
 
         event.preventDefault();
@@ -29,11 +31,14 @@ const SignupForm = props => {
             console.log(response);
             // localStorage.setItem('token', );
             // history.push('/');
-        });
+        });        
     }
 
     return (
+        <div className='signup-form'>
+            <div className='signup-formbox'>
         <form onSubmit={register}>
+            <h1>Sign Up</h1>
             <div>
                 <label htmlFor='name'>Name</label>
                 <input id='name' type='text' name='name' placeholder='Full Name' onChange={handleChanges} value={user.name} />
@@ -48,12 +53,16 @@ const SignupForm = props => {
                 <label htmlFor='password'>Password</label> 
                 <input id='password' type='password' name='password' placeholder='password' onChange={handleChanges} value={user.password} />
             </div>
+            
+            <div>
+                <button type='submit'>I'm an Organization</button>
+            </div>
 
-            <button type='submit'>I'm an Organization</button>
-            <button type='submit'>I'm a Supporter</button>
-
-        </form>
-    )
+            <div>
+                <button type='submit'>I'm a Supporter</button>
+            </div>
+        </form></div></div>
+    )    
 };
 
 export default SignupForm;
