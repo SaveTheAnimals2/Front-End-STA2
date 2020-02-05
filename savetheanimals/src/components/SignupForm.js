@@ -42,22 +42,20 @@ const SignupForm = props => {
       })
   }
 
-
-
 return (
   <div className="signup-form">
     <div className="signup-formbox">
       <form onSubmit={register}>
         <h1>Sign Up</h1>
         <div>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="username">UserName</label>
           <input
-            id="name"
+            id="username"
             type="text"
-            name="name"
-            placeholder="Full Name"
+            name="username"
+            placeholder="User Name"
             onChange={handleChanges}
-            value={user.name}
+            value={user.username}
           />
         </div>
 

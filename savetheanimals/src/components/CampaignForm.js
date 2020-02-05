@@ -96,4 +96,4 @@ const mapPropsToState = state =>
     }
 }
 
-export default connect(mapPropsToState, {addCampaign})(Campaign);
+export default connect(mapPropsToState, {addCampaign})(CampaignForm);
