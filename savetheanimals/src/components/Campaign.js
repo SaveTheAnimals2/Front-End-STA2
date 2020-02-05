@@ -1,4 +1,6 @@
 import React from 'react';
+import {FaEdit} from 'react-icons/fa';
+import {MdDelete} from 'react-icons/md';
 
 const Campaign = props => {
     
@@ -8,6 +10,8 @@ const Campaign = props => {
 
             {props.campaigns.map(campaign => (
                 <div key={campaign.id}>
+                    <FaEdit/>
+                    <MdDelete/>
                     <h2>{campaign.title}</h2>
                     <p>{campaign.location}</p>
                     <p>{campaign.description}</p>
