@@ -11,8 +11,9 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <>
       <Header />
+    <Router>
       <Switch>
      
         <Route path='/sign-up' component={SignupForm}/>
@@ -23,6 +24,7 @@ function App() {
         <Route component={LoginForm}/>
       </Switch>
     </Router>
+    </>
   );
 }
 

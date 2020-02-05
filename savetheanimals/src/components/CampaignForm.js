@@ -37,7 +37,7 @@ const CampaignForm = props => {
       <div className='campaign-formbox'>
       <h1>Add a New Campaign</h1>
         <form onSubmit={handleSubmitForm}>
-            <h1>Campaign Form</h1>
+           
       <div>
         <label htmlFor="title">Campaign Name </label>
         <input
