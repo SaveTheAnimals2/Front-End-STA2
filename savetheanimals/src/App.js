@@ -5,15 +5,20 @@ import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Dashboard from './components/Dashboard';
 import CampaignForm from './components/CampaignForm';
+import UpdateCampaignForm from './components/UpdateCampaignForm';
+import Header from './components/Header';
 import './App.css';
 
 function App() {
   return (
     <Router>
+      <Header />
       <Switch>
+     
         <Route path='/sign-up' component={SignupForm}/>
         <PrivateRoute path='/dashboard' component={Dashboard}/>
         <PrivateRoute path='/add-campaign' component={CampaignForm}/>
+        <PrivateRoute path='/update-campaign/:id' component={UpdateCampaignForm}/>>
         <Route exact path='/' component={LoginForm}/>
         <Route component={LoginForm}/>
       </Switch>

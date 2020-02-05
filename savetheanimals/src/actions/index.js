@@ -23,7 +23,6 @@ export const addCampaign = campaign => dispatch =>
     axiosWithAuth().post('/campaigns', campaign)
     .then(response =>
     {
-        dispatch({type: 'SUCCESS'});
         window.location.href = '/dashboard';
     })
     .catch(error =>
@@ -33,43 +32,37 @@ export const addCampaign = campaign => dispatch =>
     })
 }
 
-export const updateCampaign = () => dispatch =>
+export const updateCampaign = (campaign, id) => dispatch =>
 {
     dispatch({type: 'UPDATING'});
 
-    axiosWithAuth().put('')
+    axiosWithAuth().put(`/campaigns/${id}`, campaign)
     .then(response =>
     {
-        console.log(response);
-        // dispatch({type: 'SUCCESS', payload: ''});
+        dispatch({type: 'SUCCESS', payload: ''});
+        window.location.href = '/dashboard';
     })
     .catch(error =>
     {
         console.log(error);
-        // dispatch({type: 'FAILURE', payload: ''});
+        dispatch({type: 'FAILURE', payload: 'Something went wrong. Try again'});
     })
 }
 
-export const deleteCampaign = () => dispatch =>
+export const deleteCampaign = id => dispatch =>
 {
     dispatch({type: 'UPDATING'});
 
-    axiosWithAuth().delete('')
+    axiosWithAuth().delete(`/campaigns/${id}`)
     .then(response =>
     {
-        console.log(response);
-        // dispatch({type: 'SUCCESS'})
+        dispatch({type: 'SUCCESS', payload: 'Something went wrong. Try again'});
     })
     .catch(error =>
     {
         console.log(error);
-        // dispatch({type: 'FAILURE', payload: ''});
+        dispatch({type: 'FAILURE', payload: 'Something went wrong. Try again'});
     })
-}
-
-export const setIsAdmin = isAdmin => dispatch =>
-{
-    dispatch({type: 'SET_ADMIN', payload: isAdmin});
 }
 
 export const setUsername = username => dispatch =>

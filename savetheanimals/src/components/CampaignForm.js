@@ -1,47 +1,43 @@
-import React, { useState } from "react";
-// import Campaign from "./Campaign";
-import { connect } from "react-redux";
-// import { Link } from "react-router-dom";
-import { addCampaign } from "../actions";
-
-
+import React, {useState} from 'react';
+import {connect} from 'react-redux';
+import {addCampaign} from '../actions';
 import './CampaignForm.css';
 
 const CampaignForm = props => {
-  const [campaign, setCampaign] = useState({
-    title: "",
-    location: "",
-    species: "",
-    description: "",
-    urgencyLevel: "",
-    fundingGoals: "",
-    deadline: "",
-    itemize: ""
-  });
+    
+    
+    const [campaign, setCampaign] = useState({
+        title: '',
+        location: '',
+        species: '',
+        description: '',
+        urgencyLevel: '',
+        fundingGoals: '',
+        deadline: '',
+        // itemize: '',
+    });
 
-  //Need to put more input boxes in itemize
-  //Need to add axios
+    //Need to put more input boxes in itemize
+    //Need to add axios
 
-  // const [itemizeState, setItemizeState] = useState({
-  //   itemizeStateObject: []
-  // });
+    const {addCampaign} = props;
 
-  const { addCampaign } = props;
+    const handleChanges = e => {
+        setCampaign({...campaign, [e.target.name]: e.target.value});
+    };
 
-  const handleChanges = e => {
-    setCampaign({ ...campaign, [e.target.name]: e.target.value });
-  };
+    const handleSubmitForm = event =>
+    {
+        event.preventDefault();
+        addCampaign(campaign);
+    }
 
-  const handleSubmitForm = event => {
-    event.preventDefault();
-    addCampaign(campaign);
-  };
-
-  return (
+    return (
     <div className='campaign-form'>
       <div className='campaign-formbox'>
-      <form onSubmit={handleSubmitForm}>
       <h1>Add a New Campaign</h1>
+        <form onSubmit={handleSubmitForm}>
+            <h1>Campaign Form</h1>
       <div>
         <label htmlFor="title">Campaign Name </label>
         <input
@@ -174,29 +170,18 @@ const CampaignForm = props => {
             
       </div>
 
+            {/* <div>
+                <label htmlFor='itemize'>Where is the money going towards? </label>
+                <textarea id='itemize' type='itemize' name='itemize'onChange={handleChanges} value={campaign.itemize}/> */}
+            {/* <button type='submit'>I'm an Organization</button>
+            <button type='submit'>I'm a Supporter</button> */}
+            {/* </div> */}
+
 
       {/* {itemizeStateObject.map((amount, item) => {
         return (
           <>
-            <div>
-              <label htmlFor="itemize">{`Item ${item + 1}`} </label>
-              <input
-                id="itemize"
-                type="text"
-                name="itemize"
-                onChange={handleChanges}
-                value={campaign.itemize}
-              />
-
-              <label htmlFor="itemize">Amount </label>
-              <input
-                id="amount"
-                type="text"
-                name="amount"
-                onChange={handleChanges}
-                value={campaign.amount}
-              />
-            </div>
+        
 
             <input
               type="button"
@@ -214,10 +199,11 @@ const CampaignForm = props => {
   );
 };
 
-const mapPropsToState = state => {
+ const mapPropsToState = state => {
   return {
     isLoading: state.isLoading
   };
 };
+
 
 export default connect(mapPropsToState, { addCampaign })(CampaignForm);

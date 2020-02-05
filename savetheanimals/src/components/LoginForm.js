@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import SignupForm from './SignupForm';
 import { setUsername } from '../actions'
 
 import axios from 'axios';
@@ -37,7 +36,7 @@ const LoginForm = props => {
     return (
         <div className='login-form'>
             <form onSubmit={login}>
-                <h1 className='save-the-animals'>Save the Animals</h1>
+                <h2>Welcome Back!</h2>
                 <div>
                     <label htmlFor='name'>Username </label>
                     <input id='name' type='text' name='username' placeholder='Full Name' onChange={handleChange} value={user.username} />
