@@ -15,7 +15,7 @@ const Campaign = props => {
                 <div className='campaign-card' key={campaign.id}>
                     <FaEdit onClick={() => history.push(`/update-campaign/${campaign.id}`)}/>
                     <MdDelete onClick={() => props.deleteCampaign(campaign.id)}/>
-                    <h2>{campaign.title}</h2>
+                    <h3>{campaign.title}</h3>
                     <p>{campaign.location}</p>
                     <p>{campaign.description}</p>
                     <p>{campaign.species}</p>
