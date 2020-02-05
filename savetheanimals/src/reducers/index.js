@@ -20,6 +20,7 @@ export const reducer = (state = initalState, action) =>
             return {
                 ...state,
                 isLoading: false,
+                error: '',
                 campaigns: action.payload,
                 isUpdating: false
             }

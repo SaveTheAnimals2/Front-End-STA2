@@ -50,21 +50,21 @@ export const updateCampaign = () => dispatch =>
     })
 }
 
-export const deleteCampaign = () => dispatch =>
+export const deleteCampaign = id => dispatch =>
 {
-    dispatch({type: 'UPDATING'});
+    // dispatch({type: 'UPDATING'});
 
-    axiosWithAuth().delete('')
-    .then(response =>
-    {
-        console.log(response);
-        // dispatch({type: 'SUCCESS'})
-    })
-    .catch(error =>
-    {
-        console.log(error);
-        // dispatch({type: 'FAILURE', payload: ''});
-    })
+    // axiosWithAuth().delete('')
+    // .then(response =>
+    // {
+    //     console.log(response);
+    //     // dispatch({type: 'SUCCESS'})
+    // })
+    // .catch(error =>
+    // {
+    //     console.log(error);
+    //     // dispatch({type: 'FAILURE', payload: ''});
+    // })
 }
 
 export const setIsAdmin = isAdmin => dispatch =>
