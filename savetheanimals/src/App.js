@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/register' component={SignupForm}/>
+        <Route path='/sign-up' component={SignupForm}/>
         <PrivateRoute path='/dashboard' component={Dashboard}/>
         <PrivateRoute path='/add-campaign' component={CampaignForm}/>
         <Route exact path='/' component={LoginForm}/>
