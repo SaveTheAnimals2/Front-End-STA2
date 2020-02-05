@@ -81,7 +81,7 @@ const SignupForm = props => {
           </div>
 
           <div>
-            <label htmlFor="password2">Password</label>
+            <label htmlFor="password2">Confirm Password</label>
             <input
               id="password2"
               type="password"
@@ -95,9 +95,7 @@ const SignupForm = props => {
 
           <div>
             <button type="submit">I'm an Organization</button>
-          </div>
-
-          <div>
+          
             <button type="submit">I'm a Supporter</button>
           </div>
         </form>

@@ -4,7 +4,7 @@ import PrivateRoute from './components/PrivateRoute';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import Dashboard from './components/Dashboard';
-// import CampaignForm from './components/CampaignForm';
+import CampaignForm from './components/CampaignForm';
 import './App.css';
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           <Route exact path='/' component={LoginForm}/>
           <Route exact path='/sign-up' component={SignupForm}/>
           {/* <Route component={Login}/> */}
-          {/* <Route path='/campaign-form' component={CampaignForm}/> */}
+          <Route path='/campaign-form' component={CampaignForm}/>
         </Switch>
       </Router>
       
