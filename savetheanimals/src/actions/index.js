@@ -18,13 +18,9 @@ export const getCampaigns = () => dispatch =>
 
 export const addCampaign = campaign => dispatch =>
 {
-    console.log(campaign);
     dispatch({type: 'GET_CAMPAIGNS'});
-    axiosWithAuth().post('/campaigns', campaign)
-    .then(response =>
-    {
-        window.location.href = '/dashboard';
-    })
+    return axiosWithAuth().post('/campaigns', campaign)
+    .then( dispatch({type: 'SUCCESS', payload: ''}))
     .catch(error =>
     {
         console.log(error);
@@ -40,7 +36,7 @@ export const updateCampaign = (campaign, id) => dispatch =>
     .then(response =>
     {
         dispatch({type: 'SUCCESS', payload: ''});
-        window.location.href = '/dashboard';
+        window.location = '/dashboard';
     })
     .catch(error =>
     {
@@ -56,7 +52,7 @@ export const deleteCampaign = id => dispatch =>
     axiosWithAuth().delete(`/campaigns/${id}`)
     .then(response =>
     {
-        dispatch({type: 'SUCCESS', payload: 'Something went wrong. Try again'});
+        dispatch({type: 'SUCCESS', payload: ''});
     })
     .catch(error =>
     {
