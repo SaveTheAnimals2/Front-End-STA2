@@ -1,0 +1,10 @@
+.item-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 500px;
+    margin: auto 100px;
+    padding: 32px;
+    font-size: 16px;
+ }
+
