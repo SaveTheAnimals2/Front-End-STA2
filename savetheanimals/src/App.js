@@ -12,11 +12,11 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/register' component={Signup}/>
+        <Route path='/sign-up' component={SignupForm}/>
         <PrivateRoute path='/dashboard' component={Dashboard}/>
         <PrivateRoute path='/add-campaign' component={CampaignForm}/>
-        <Route exact path='/' component={Login}/>
-        <Route component={Login}/>
+        <Route exact path='/' component={LoginForm}/>
+        <Route component={LoginForm}/>
       </Switch>
     </Router>
   );
