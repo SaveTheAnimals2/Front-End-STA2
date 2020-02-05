@@ -1,9 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {addCampaign} from '../actions';
+import {useParams} from 'react-router-dom';
+import axiosWithAuth from '../utils/AxiosWithAuth';
+import {updateCampaign} from '../actions';
 
-const CampaignForm = props => {
+const UpdateCampaignForm = props => {
     
+    const {id} = useParams();
     
     const [campaign, setCampaign] = useState({
         title: '',
@@ -19,7 +22,25 @@ const CampaignForm = props => {
     //Need to put more input boxes in itemize
     //Need to add axios
 
-    const {addCampaign} = props;
+    const {updateCampaign} = props;
+
+    useEffect(() =>
+    {
+        axiosWithAuth().get(`/campaigns/${id}`)
+        .then(response => {
+            setCampaign(
+            {
+                title: response.data.title,
+                location: response.data.location,
+                description: response.data.description,
+                species: response.data.species,
+                urgencyLevel: response.data.urgencyLevel,
+                fundingGoals: response.data.fundingGoals,
+                deadline: response.data.deadline
+            });
+        })
+        .catch(error => console.log(error))
+    }, [id])
 
     const handleChanges = e => {
         setCampaign({...campaign, [e.target.name]: e.target.value});
@@ -28,7 +49,7 @@ const CampaignForm = props => {
     const handleSubmitForm = event =>
     {
         event.preventDefault();
-        addCampaign(campaign);
+       updateCampaign(campaign, id);
     }
 
     return (
@@ -64,8 +85,8 @@ const CampaignForm = props => {
                     <option>Critical</option>
                 </select>
             </div>
-
-            {/* <div>
+{/* 
+            <div>
                 <label htmlFor='itemize'>Where is the money going towards? </label>
                 <textarea id='itemize' type='itemize' name='itemize'onChange={handleChanges} value={campaign.itemize}/> */}
             {/* <button type='submit'>I'm an Organization</button>
@@ -82,7 +103,7 @@ const CampaignForm = props => {
                 <input id='deadline' type='text' name='deadline' placeholder='MM/DD/YYYY' onChange={handleChanges} value={campaign.deadline}/>
             </div>
 
-            <button type='submit'>Add Campaign</button>
+            <button type='submit'>Update Campaign</button>
 
         </form>
 
@@ -96,4 +117,4 @@ const mapPropsToState = state =>
     }
 }
 
-export default connect(mapPropsToState, {addCampaign})(CampaignForm);
+export default connect(mapPropsToState, {updateCampaign})(UpdateCampaignForm);
