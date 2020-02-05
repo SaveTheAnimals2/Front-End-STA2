@@ -1,9 +1,10 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
-import Login from './components/Login'
-import Signup from './components/Signup';
+import LoginForm from './components/LoginForm';
+import SignupForm from './components/SignupForm';
 import Dashboard from './components/Dashboard';
+
 import CampaignForm from './components/CampaignForm';
 import './App.css';
 

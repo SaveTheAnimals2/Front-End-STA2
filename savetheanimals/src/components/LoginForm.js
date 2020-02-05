@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
-import axios from 'axios';
-import {connect} from 'react-redux';
-import {setUsername} from '../actions'
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import SignupForm from './SignupForm';
 
-const Login = props => {
+import axios from 'axios';
+
+const LoginForm = props => {
     const [user, setUser] = useState({
         username: '',
         password: ''
     });
 
-    const {history, setUsername} = props;
+    const {history} = props;
 
     const handleChange = event =>
     {
@@ -22,12 +23,12 @@ const Login = props => {
     const login = event =>
     {
         event.preventDefault();
-        axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/login', user)
+        axios.post('', user)
         .then(response =>
         {
-            localStorage.setItem('token', response.data.getToken);
-            setUsername(user.username);
-            history.push('/dashboard');
+            console.log(response);
+            // localStorage.setItem('token', );
+            // history.push('/dashboard');
         })
         .catch(error => 
         {
@@ -36,28 +37,26 @@ const Login = props => {
     }
 
     return (
-        <form onSubmit={login}>
-            <div>
+        <div className='login-form'>
+            <form onSubmit={login}>
+            <h1>Save the Animals</h1>
+                <div>
                 <label htmlFor='name'>Username </label>
                 <input id='name' type='text' name='username' placeholder='Full Name' onChange={handleChange} value={user.username}/>
-            </div>
-            
-            <div>
+                </div>
+                <div>
                 <label htmlFor='password'>Password </label> 
                 <input id='password' type='password' name='password' placeholder='Full Name' onChange={handleChange} value={user.password}/>
-            </div>
+                </div>
+                <button className='login-button' type='login'>Login</button>
 
-            <button type='login'>Login</button>
-
-        </form>
+                <div>
+                New User? Sign up <Link to='/sign-up'>here</Link>!
+                </div>
+            </form>
+        </div>
+        
     )
 };
 
-const mapStateToProps = state =>
-{
-    return{
-        state
-    }
-}
-
-export default connect(mapStateToProps, {setUsername})(Login);
+export default LoginForm;

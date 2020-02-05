@@ -1,9 +1,12 @@
 import React, {useState} from 'react';
+import Campaign from './Campaign';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {addCampaign} from '../actions';
 
-const Campaign = props => {
+const CampaignForm = props => {
+    
+    
     const [campaign, setCampaign] = useState({
         title: '',
         location: '',
@@ -12,8 +15,9 @@ const Campaign = props => {
         urgencyLevel: '',
         fundingGoals: '',
         deadline: '',
-
+        itemize: '',
     });
+
 
     const {addCampaign} = props;
 
@@ -28,7 +32,8 @@ const Campaign = props => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitForm}>
+            <h1>Campaign Form</h1>
             <div>
                 <label htmlFor='title'>Campaign Name </label>
                 <input id='title' type='text' name='title' placeholder='Campaign Name' onChange={handleChanges} value={campaign.title}/>
@@ -45,7 +50,7 @@ const Campaign = props => {
             </div>
 
             <div>
-                <label htmlFor='description'>Description of what your campaign will do </label> 
+                <label htmlFor='description'>Description of what your campaign will do </label>
                 <textarea id='description' type='text' name='description' onChange={handleChanges} value={campaign.description}/>
             </div>
 
@@ -60,6 +65,9 @@ const Campaign = props => {
                 </select>
             </div>
 
+            <div>
+                <label htmlFor='itemize'>Where is the money going towards? </label>
+                <textarea id='itemize' type='itemize' name='itemize'onChange={handleChanges} value={campaign.itemize}/>
             {/* <button type='submit'>I'm an Organization</button>
             <button type='submit'>I'm a Supporter</button> */}
 
