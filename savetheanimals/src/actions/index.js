@@ -52,6 +52,7 @@ export const updateCampaign = () => dispatch =>
 
 export const deleteCampaign = id => dispatch =>
 {
+    console.log(id);
     // dispatch({type: 'UPDATING'});
 
     // axiosWithAuth().delete('')
