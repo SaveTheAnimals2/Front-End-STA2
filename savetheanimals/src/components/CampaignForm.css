@@ -20,6 +20,22 @@
   
   }
 
+  .campaign-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+  }
+
+  .campaign-card {
+    width: 400px;
+    margin: 20px 20px ;
+    padding: 32px;
+    font-size: 16px;
+    /* font-weight: bold; */
+    background-color: rgba(136, 95, 66, 0.8);
+    box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, 0.1);
+  }
+
 
 
 
