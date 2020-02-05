@@ -2,7 +2,8 @@ const initalState = {
     isLoading: false,
     error: '',
     campaigns: [],
-    isUpdating: false
+    isUpdating: false,
+    username: ''
 };
 
 export const reducer = (state = initalState, action) =>
@@ -18,8 +19,8 @@ export const reducer = (state = initalState, action) =>
         case 'SUCCESS':
             return {
                 ...state,
-                campaigns: action.payload,
                 isLoading: false,
+                campaigns: action.payload,
                 isUpdating: false
             }
 
@@ -36,7 +37,11 @@ export const reducer = (state = initalState, action) =>
                 ...state,
                 isUpdating: true
             }
-
+        case 'SET_USERNAME':
+            return{
+                ...state,
+                username: action.payload
+            }
         default:
             return state;
     }

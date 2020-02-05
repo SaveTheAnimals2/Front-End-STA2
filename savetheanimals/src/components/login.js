@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {setUsername} from '../actions'
 
 const Login = props => {
     const [user, setUser] = useState({
@@ -7,7 +9,7 @@ const Login = props => {
         password: ''
     });
 
-    const {history} = props;
+    const {history, setUsername} = props;
 
     const handleChange = event =>
     {
@@ -20,12 +22,12 @@ const Login = props => {
     const login = event =>
     {
         event.preventDefault();
-        axios.post('', user)
+        axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/login', user)
         .then(response =>
         {
-            console.log(response);
-            // localStorage.setItem('token', );
-            // history.push('/dashboard');
+            localStorage.setItem('token', response.data.getToken);
+            setUsername(user.username);
+            history.push('/dashboard');
         })
         .catch(error => 
         {
@@ -51,4 +53,11 @@ const Login = props => {
     )
 };
 
-export default Login;
+const mapStateToProps = state =>
+{
+    return{
+        state
+    }
+}
+
+export default connect(mapStateToProps, {setUsername})(Login);

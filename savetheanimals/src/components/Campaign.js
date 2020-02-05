@@ -6,12 +6,12 @@ const Campaign = props => {
         <div>
             {props.campaigns.map(campaign => (
                 <div key={campaign.id}>
-                    <h2>{campaign.name}</h2>
+                    <h2>{campaign.title}</h2>
                     <p>{campaign.location}</p>
+                    <p>{campaign.description}</p>
                     <p>{campaign.species}</p>
-                    <p>{campaign.desc}</p>
-                    <p>{campaign.urgency}</p>
-                    <p>{campaign.goal}</p>
+                    <p>{campaign.urgencyLevel}</p>
+                    <p>{campaign.fundingGoals}</p>
                     <p>{campaign.deadline}</p>
                    
                 </div>

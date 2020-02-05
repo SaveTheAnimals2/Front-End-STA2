@@ -4,32 +4,32 @@ export const getCampaigns = () => dispatch =>
 {
     dispatch({type: 'GET_CAMPAIGNS'});
 
-    axiosWithAuth().get('')
+    axiosWithAuth().get('/campaigns')
     .then(response => 
     {
-        console.log(response)
-        // dispatch({type: 'SUCCESS', payload: ''});
+        dispatch({type: 'SUCCESS', payload: response.data});
     })
     .catch(error => 
     {
         console.log(error)
-        // dispatch({type: 'FAILURE', payload: ''});
+        dispatch({type: 'FAILURE', payload: 'Something went wrong. Try again'});
     })
 }
 
-export const addCampaign = () => dispatch =>
+export const addCampaign = campaign => dispatch =>
 {
+    console.log(campaign);
     dispatch({type: 'GET_CAMPAIGNS'});
-    axiosWithAuth().post('')
+    axiosWithAuth().post('/campaigns', campaign)
     .then(response =>
     {
-        console.log(response);
-        // dispatch({type: 'SUCCESS', payload: ''})
+        dispatch({type: 'SUCCESS'});
+        window.location.href = '/dashboard';
     })
     .catch(error =>
     {
         console.log(error);
-        // dispatch({type: 'FAILURE', payload: ''});
+        dispatch({type: 'FAILURE', payload: 'Something went wrong. Try again'});
     })
 }
 
@@ -65,4 +65,14 @@ export const deleteCampaign = () => dispatch =>
         console.log(error);
         // dispatch({type: 'FAILURE', payload: ''});
     })
+}
+
+export const setIsAdmin = isAdmin => dispatch =>
+{
+    dispatch({type: 'SET_ADMIN', payload: isAdmin});
+}
+
+export const setUsername = username => dispatch =>
+{
+    dispatch({type: 'SET_USERNAME', payload: username});
 }
