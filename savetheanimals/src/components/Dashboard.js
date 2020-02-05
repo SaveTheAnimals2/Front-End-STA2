@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCampaigns, updateCampaign, deleteCampaign } from '../actions';
-import Header from './Header';
+
 import Campaign from './Campaign';
 
 function Dashboard(props) 
@@ -18,7 +18,7 @@ function Dashboard(props)
 
   return (
     <div className='user-dashboard'>
-    <Header />
+  
       <h1>Welcome {username} to your dashboard</h1>
       <div className='campaign-container'>
         {campaigns === undefined || campaigns.length === 0 ?
