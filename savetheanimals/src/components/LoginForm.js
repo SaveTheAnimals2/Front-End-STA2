@@ -23,7 +23,6 @@ const LoginForm = props => {
 
     const login = event => {
         event.preventDefault();
-        axios.post('', user)
         axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/login', user)
             .then(response => {
                 localStorage.setItem('token', response.data.getToken);

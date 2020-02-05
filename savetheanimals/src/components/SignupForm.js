@@ -29,8 +29,14 @@ const SignupForm = props => {
 
   const register = event => {
     event.preventDefault();
+    const loginUser = {
+      username: user.username,
+      organizationName: user.organizationName,
+      email: user.email,
+      password: user.password
+    };
     
-    axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/register', user)
+    axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/register', loginUser)
       .then(response => {
         history.push('/login');
       })
@@ -42,14 +48,14 @@ const SignupForm = props => {
       <form onSubmit={register}>
         <h1>Sign Up</h1>
         <div>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="username">UserName</label>
           <input
-            id="name"
+            id="username"
             type="text"
-            name="name"
-            placeholder="Full Name"
+            name="username"
+            placeholder="User Name"
             onChange={handleChanges}
-            value={user.name}
+            value={user.username}
           />
         </div>
   
