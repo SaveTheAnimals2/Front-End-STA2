@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Campaign from './Campaign';
 import {connect} from 'react-redux';
 import {Link, useParams} from 'react-router-dom';
+import axiosWithAuth from '../utils/AxiosWithAuth';
 import {updateCampaign} from '../actions';
 
 const UpdateCampaignForm = props => {
@@ -17,7 +18,7 @@ const UpdateCampaignForm = props => {
         urgencyLevel: '',
         fundingGoals: '',
         deadline: '',
-        itemize: '',
+        // itemize: '',
     });
 
     //Need to put more input boxes in itemize
@@ -27,7 +28,20 @@ const UpdateCampaignForm = props => {
 
     useEffect(() =>
     {
-
+        axiosWithAuth().get(`/campaigns/${id}`)
+        .then(response => {
+            setCampaign(
+            {
+                title: response.data.title,
+                location: response.data.location,
+                description: response.data.description,
+                species: response.data.species,
+                urgencyLevel: response.data.urgencyLevel,
+                fundingGoals: response.data.fundingGoals,
+                deadline: response.data.deadline
+            });
+        })
+        .catch(error => console.log(error))
     }, [])
 
     const handleChanges = e => {
