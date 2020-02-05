@@ -9,7 +9,6 @@ const UpdateCampaignForm = props => {
     
     const {id} = useParams();
     
-    console.log(id);
     const [campaign, setCampaign] = useState({
         title: '',
         location: '',
@@ -42,7 +41,7 @@ const UpdateCampaignForm = props => {
             });
         })
         .catch(error => console.log(error))
-    }, [])
+    }, [id])
 
     const handleChanges = e => {
         setCampaign({...campaign, [e.target.name]: e.target.value});
@@ -51,7 +50,7 @@ const UpdateCampaignForm = props => {
     const handleSubmitForm = event =>
     {
         event.preventDefault();
-       updateCampaign(campaign);
+       updateCampaign(campaign, id);
     }
 
     return (

@@ -33,15 +33,14 @@ export const addCampaign = campaign => dispatch =>
     })
 }
 
-export const updateCampaign = id => dispatch =>
+export const updateCampaign = (campaign, id) => dispatch =>
 {
     dispatch({type: 'UPDATING'});
 
-    axiosWithAuth().put('')
+    axiosWithAuth().put(`/campaigns/${id}`, campaign)
     .then(response =>
     {
-        console.log(response);
-        // dispatch({type: 'SUCCESS', payload: ''});
+        window.location.href = '/dashboard';
     })
     .catch(error =>
     {
