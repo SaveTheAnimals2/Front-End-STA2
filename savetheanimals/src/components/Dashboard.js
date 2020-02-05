@@ -22,7 +22,7 @@ function Dashboard(props)
         {campaigns === undefined || campaigns.length === 0 ?
           <p>Let's add a campaign to see it here</p> :
           !isLoading && !isUpdating && (
-            <Campaign campaigns={campaigns} deleteCampaign={deleteCampaign} />
+            <Campaign campaigns={campaigns} deleteCampaign={deleteCampaign} updateCampaign={updateCampaign}/>
           )}
       </div>
 

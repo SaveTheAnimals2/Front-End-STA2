@@ -1,17 +1,18 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
 import {FaEdit} from 'react-icons/fa';
 import {MdDelete} from 'react-icons/md';
 
 const Campaign = props => {
-    const {deleteCampaign} = props;
+    const history = useHistory();
     return (
         <div>
             <h1>Campaign</h1>
 
             {props.campaigns.map(campaign => (
                 <div key={campaign.id}>
-                    <FaEdit/>
-                    <MdDelete onClick={() => deleteCampaign(campaign.id)}/>
+                    <FaEdit onClick={() => history.push(`/update-campaign/${campaign.id}`)}/>
+                    <MdDelete onClick={() => props.deleteCampaign(campaign.id)}/>
                     <h2>{campaign.title}</h2>
                     <p>{campaign.location}</p>
                     <p>{campaign.description}</p>

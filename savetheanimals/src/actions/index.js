@@ -33,7 +33,7 @@ export const addCampaign = campaign => dispatch =>
     })
 }
 
-export const updateCampaign = () => dispatch =>
+export const updateCampaign = id => dispatch =>
 {
     dispatch({type: 'UPDATING'});
 
