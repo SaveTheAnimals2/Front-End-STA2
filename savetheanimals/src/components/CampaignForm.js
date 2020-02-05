@@ -18,6 +18,8 @@ const CampaignForm = props => {
         itemize: '',
     });
 
+    //Need to put more input boxes in itemize
+    //Need to add axios
 
     const {addCampaign} = props;
 

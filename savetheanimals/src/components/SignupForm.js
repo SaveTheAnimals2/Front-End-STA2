@@ -6,19 +6,13 @@ import "./SignUp.css";
 
 const SignupForm = props => {
 
-  // const [user, setUser] = useState({
-  //   name: "",
-  //   email: "",
-  //   password: "",
-  //   password2: "",
-  // });
 
-  //this is what backend needs to signup
   const [user, setUser] = useState({
     username: '',
+    organizationName: '',
     email: '',
     password: '',
-    organizationName: ''
+    password2: '',
   });
 
   const { history } = props;
@@ -35,14 +29,14 @@ const SignupForm = props => {
 
   const register = event => {
     event.preventDefault();
-
+    
     axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/register', user)
       .then(response => {
         history.push('/login');
       })
   }
 
-return (
+ return (
   <div className="signup-form">
     <div className="signup-formbox">
       <form onSubmit={register}>
@@ -56,6 +50,18 @@ return (
             placeholder="User Name"
             onChange={handleChanges}
             value={user.username}
+          />
+        </div>
+  
+        <div>
+          <label htmlFor="name">Name of Organization</label>
+          <input
+            id="organizationName"
+            type="text"
+            name="organizationName"
+            placeholder="Organization"
+            onChange={handleChanges}
+            value={user.organizationName}
           />
         </div>
 
@@ -86,7 +92,7 @@ return (
         </div>
 
         <div>
-          <label htmlFor="password2">Password</label>
+          <label htmlFor="password2">Confirm Password</label>
           <input
             id="password2"
             type="password"
