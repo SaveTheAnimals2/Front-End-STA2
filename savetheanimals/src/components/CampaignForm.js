@@ -1,16 +1,19 @@
 import React, {useState} from 'react';
 import Campaign from './Campaign';
+import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {addCampaign} from '../actions';
 
 const CampaignForm = props => {
     
     
     const [campaign, setCampaign] = useState({
-        name: '',
+        title: '',
         location: '',
         species: '',
         description: '',
-        urgency: '',
-        goal: '',
+        urgencyLevel: '',
+        fundingGoals: '',
         deadline: '',
         itemize: '',
     });
@@ -18,25 +21,24 @@ const CampaignForm = props => {
     //Need to put more input boxes in itemize
     //Need to add axios
 
+    const {addCampaign} = props;
 
     const handleChanges = e => {
         setCampaign({...campaign, [e.target.name]: e.target.value});
     };
 
-    const submitForm = e => {
-        e.preventDefault();
-        console.log(e, props);
-        props.addNewCampaign(campaign);
-        setCampaign({name: '', locaton: '', species: '', description: '', urgency: '', goal: '', deadline: '', itemize: ''});  
-    };
+    const handleSubmitForm = event =>
+    {
+        event.preventDefault();
+        addCampaign(campaign);
+    }
 
     return (
-        <form onSubmit={submitForm}>
+        <form onSubmit={handleSubmitForm}>
             <h1>Campaign Form</h1>
-
             <div>
-                <label htmlFor='name'>Campaign Name </label>
-                <input id='name' type='text' name='name' placeholder='Campaign Name' onChange={handleChanges} value={campaign.name}/>
+                <label htmlFor='title'>Campaign Name </label>
+                <input id='title' type='text' name='title' placeholder='Campaign Name' onChange={handleChanges} value={campaign.title}/>
             </div>
 
             <div>
@@ -50,13 +52,13 @@ const CampaignForm = props => {
             </div>
 
             <div>
-                <label htmlFor='description'>Description of what your campaign will do </label> 
-                <textarea id='desc' type='text' name='desc' onChange={handleChanges} value={campaign.desc}/>
+                <label htmlFor='description'>Description of what your campaign will do </label>
+                <textarea id='description' type='text' name='description' onChange={handleChanges} value={campaign.description}/>
             </div>
 
             <div>
                 <label htmlFor='select'>Urgency Level </label>
-                <select id='urgency' type='select' name='location' placeholder='select urgency' onChange={handleChanges} value={campaign.urgency}>
+                <select id='urgency' type='select' name='urgencyLevel' placeholder='select urgency' onChange={handleChanges} value={campaign.urgencyLevel}>
                     <option/>
                     <option>Low</option>
                     <option>Medium</option>
@@ -65,27 +67,35 @@ const CampaignForm = props => {
                 </select>
             </div>
 
-            
-            <div>
-                <label htmlFor='goal'>Goal Amount </label> 
-                <input id='goal' type='text' name='goal' placeholder='$' onChange={handleChanges} value={campaign.goal}/>
-            </div>
-
-            <div>
-                <label htmlFor='deadline'>Deadline for Funding</label> 
-                <input id='deadline' type='date' name='date' placeholder='MM/DD/YYYY' onChange={handleChanges} value={campaign.deadline}/>
-            </div>
-
             <div>
                 <label htmlFor='itemize'>Where is the money going towards? </label>
                 <textarea id='itemize' type='itemize' name='itemize'onChange={handleChanges} value={campaign.itemize}/>
+            {/* <button type='submit'>I'm an Organization</button>
+            <button type='submit'>I'm a Supporter</button> */}
+            </div>
+
+            <div>
+                <label htmlFor='fundingGoals'>Goal Amount </label> 
+                <input id='fundingGoals' type='text' name='fundingGoals' placeholder='$' onChange={handleChanges} value={campaign.fundingGoals}/>
+            </div>
+
+            <div>
+                <label htmlFor='deadline'>Deadline </label> 
+                <input id='deadline' type='date' name='deadline' placeholder='MM/DD/YYYY' onChange={handleChanges} value={campaign.deadline}/>
             </div>
 
             <button type='submit'>Add Campaign</button>
 
-
         </form>
+
     )
 };
 
-export default CampaignForm;
+const mapPropsToState = state =>
+{
+    return{
+        isLoading: state.isLoading
+    }
+}
+
+export default connect(mapPropsToState, {addCampaign})(CampaignForm);

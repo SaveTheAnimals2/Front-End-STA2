@@ -9,18 +9,15 @@ import './App.css';
 
 function App() {
   return (
-    <div className='App'>
-      <Router>
-        <Switch>
-          <PrivateRoute path='/dashboard' component={Dashboard}/>
-          <Route exact path='/' component={LoginForm}/>
-          <Route exact path='/sign-up' component={SignupForm}/>
-          {/* <Route component={Login}/> */}
-          <Route path='/campaign-form' component={CampaignForm}/>
-        </Switch>
-      </Router>
-      
-    </div>
+    <Router>
+      <Switch>
+        <Route path='/sign-up' component={SignupForm}/>
+        <PrivateRoute path='/dashboard' component={Dashboard}/>
+        <PrivateRoute path='/add-campaign' component={CampaignForm}/>
+        <Route exact path='/' component={LoginForm}/>
+        <Route component={LoginForm}/>
+      </Switch>
+    </Router>
   );
 }
 
