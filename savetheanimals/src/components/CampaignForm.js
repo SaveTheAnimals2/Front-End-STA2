@@ -14,7 +14,7 @@ const CampaignForm = props => {
         urgencyLevel: '',
         fundingGoals: '',
         deadline: '',
-        // itemize: '',
+        itemize: '',
     });
 
     //Need to put more input boxes in itemize
@@ -149,21 +149,21 @@ const CampaignForm = props => {
           <div>
             <label htmlFor="itemize2">Item #2 </label>
             <input
-                id="itemize"
+                id="itemize2"
                 type="text"
                 name="itemize"
                 onChange={handleChanges}
-                value={campaign.itemize}
+                value={campaign.itemize2}
                 />
             </div>
           <div>
             <label htmlFor="amount2">Amount  </label>
             <input
-                id="amount"
+                id="amount2"
                 type="text"
                 name="amount"
                 onChange={handleChanges}
-                value={campaign.amount}
+                value={campaign.amount2}
                 />
              </div>
          </div>

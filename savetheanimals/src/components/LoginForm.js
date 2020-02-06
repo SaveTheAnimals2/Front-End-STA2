@@ -39,11 +39,11 @@ const LoginForm = props => {
                 <h2>Welcome Back!</h2>
                 <div>
                     <label htmlFor='name'>Username </label>
-                    <input id='name' type='text' name='username' placeholder='Full Name' onChange={handleChange} value={user.username} />
+                    <input id='name' type='text' name='username' placeholder='username' onChange={handleChange} value={user.username} />
                 </div>
                 <div>
                     <label htmlFor='password'>Password </label>
-                    <input id='password' type='password' name='password' placeholder='Full Name' onChange={handleChange} value={user.password} />
+                    <input id='password' type='password' name='password' placeholder='password' onChange={handleChange} value={user.password} />
                 </div>
                 <button className='login-button' type='login'>Login</button>
 
