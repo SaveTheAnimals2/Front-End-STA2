@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import axios from "axios";
 
 import "./SignUp.css";
@@ -58,17 +59,7 @@ const SignupForm = props => {
           />
         </div>
   
-        <div>
-          <label htmlFor="name">Name of Organization</label>
-          <input
-            id="organizationName"
-            type="text"
-            name="organizationName"
-            placeholder="Organization"
-            onChange={handleChanges}
-            value={user.organizationName}
-          />
-        </div>
+      
 
         <div>
           <label htmlFor="email">Email</label>
@@ -110,12 +101,28 @@ const SignupForm = props => {
         </div>
 
         <div>
+          <button type="submit">I'm a Supporter</button>
+        </div>
+
+        <div>
+          <label htmlFor="name">Organization</label>
+          <input
+            id="organizationName"
+            type="text"
+            name="organizationName"
+            placeholder="Name of Organization"
+            onChange={handleChanges}
+            value={user.organizationName}
+          />
+        </div>
+        <div>
           <button type="submit">I'm an Organization</button>
         </div>
 
         <div>
-          <button type="submit">I'm a Supporter</button>
-        </div>
+                    Already a member? Login <Link to='/'>here</Link>!
+                </div>
+
       </form>
     </div>
   </div>
