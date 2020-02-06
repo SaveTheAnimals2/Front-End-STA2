@@ -1,8 +1,0 @@
-{
-    "version": 2,
-    "name": "savetheanimals",
-    "builds": [{ "src": "savetheanimals/package.json", "use": "@now/static-build", "config": {"distDir": "build"} }],
-    "routes": [
-        { "src": "/(.*)", "dest": "savetheanimals/$1" }
-    ]
-}
