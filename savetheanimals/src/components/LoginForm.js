@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { setUsername } from '../actions'
 
 import axios from 'axios';
 
@@ -25,7 +23,6 @@ const LoginForm = props => {
         axios.post('https://save-the-animal-buildweek.herokuapp.com/api/auth/login', user)
             .then(response => {
                 localStorage.setItem('token', response.data.getToken);
-                setUsername(user.username);
                 history.push('/dashboard');
             })
             .catch(error => {
@@ -56,10 +53,4 @@ const LoginForm = props => {
     )
 };
 
-const mapStateToProps = state => {
-    return {
-        state
-    }
-}
-
-export default connect(mapStateToProps, { setUsername })(LoginForm);
+export default LoginForm;

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {useHistory} from 'react-router';
+import {useHistory} from 'react-router-dom';
 import {addCampaign} from '../actions';
 import './CampaignForm.css';
 
@@ -15,7 +15,7 @@ const CampaignForm = props => {
         urgencyLevel: '',
         fundingGoals: '',
         deadline: '',
-        itemize: '',
+        // itemize: '',
     });
 
     //Need to put more input boxes in itemize
@@ -30,8 +30,9 @@ const CampaignForm = props => {
     const handleSubmitForm = event =>
     {
         event.preventDefault();
-        addCampaign(campaign)
-        .then(() => history.push('/dashboard'))
+        addCampaign(campaign);
+
+        history.push('/dashboard');
     }
 
     return (
@@ -125,7 +126,7 @@ const CampaignForm = props => {
         />
       </div>
 
-      <div class='container'>
+      {/* <div class='container'>
         <label htmlFor='itemize'>Where will the money go?</label>
         <div className='item-container'>
           <div>
@@ -170,7 +171,7 @@ const CampaignForm = props => {
              </div>
          </div>
             
-      </div>
+      </div> */}
 
             {/* <div>
                 <label htmlFor='itemize'>Where is the money going towards? </label>

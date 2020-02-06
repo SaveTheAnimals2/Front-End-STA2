@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import axiosWithAuth from '../utils/AxiosWithAuth';
 import {updateCampaign} from '../actions';
 
 const UpdateCampaignForm = props => {
     
     const {id} = useParams();
+    const history = useHistory();
     
     const [campaign, setCampaign] = useState({
         title: '',
@@ -50,6 +51,7 @@ const UpdateCampaignForm = props => {
     {
         event.preventDefault();
        updateCampaign(campaign, id);
+        history.push('/dashboard');
     }
 
     return (
