@@ -20,7 +20,7 @@ export const addCampaign = campaign => dispatch =>
 {
     dispatch({type: 'GET_CAMPAIGNS'});
     return axiosWithAuth().post('/campaigns', campaign)
-    .then( dispatch({type: 'SUCCESS', payload: ''}))
+    .then(dispatch({type: 'SUCCESS', payload: ''}))
     .catch(error =>
     {
         console.log(error);
@@ -32,12 +32,8 @@ export const updateCampaign = (campaign, id) => dispatch =>
 {
     dispatch({type: 'UPDATING'});
 
-    axiosWithAuth().put(`/campaigns/${id}`, campaign)
-    .then(response =>
-    {
-        dispatch({type: 'SUCCESS', payload: ''});
-        window.location = '/dashboard';
-    })
+   return axiosWithAuth().put(`/campaigns/${id}`, campaign)
+    .then(dispatch({type: 'SUCCESS', payload: ''}))
     .catch(error =>
     {
         console.log(error);
