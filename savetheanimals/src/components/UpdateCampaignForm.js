@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useParams, useHistory} from 'react-router-dom';
 import axiosWithAuth from '../utils/AxiosWithAuth';
-import {updateCampaign} from '../actions';
+
 
 const UpdateCampaignForm = props => {
     
     const {id} = useParams();
     const history = useHistory();
-    
+    const dispatch = useDispatch();
     const [campaign, setCampaign] = useState({
         title: '',
         location: '',
@@ -50,8 +50,13 @@ const UpdateCampaignForm = props => {
     const handleSubmitForm = event =>
     {
         event.preventDefault();
-       updateCampaign(campaign, id);
-        history.push('/dashboard');
+        axiosWithAuth().put(`/campaigns/${id}`, campaign)
+        .then(history.push('/dashboard'))
+        .catch(error =>
+        {
+            console.log(error);
+            dispatch({type: 'FAILURE', payload: 'Something went wrong. Try again'});
+        })
     }
 
     return (
@@ -112,11 +117,4 @@ const UpdateCampaignForm = props => {
     )
 };
 
-const mapPropsToState = state =>
-{
-    return{
-        state
-    }
-}
-
-export default connect(mapPropsToState, {updateCampaign})(UpdateCampaignForm);
+export default UpdateCampaignForm;

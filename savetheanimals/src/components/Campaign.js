@@ -1,29 +1,36 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
-import {FaEdit} from 'react-icons/fa';
-import {MdDelete} from 'react-icons/md';
-
-import './CampaignForm.css';
+import { useHistory } from 'react-router-dom';
+import { FaEdit } from 'react-icons/fa';
+import { MdDelete } from 'react-icons/md';
+import { useDispatch } from 'react-redux';
+import axiosWithAuth from '../utils/AxiosWithAuth';
 
 const Campaign = props => {
     const history = useHistory();
+    const { id, title, location, description, species, urgencyLevel, fundingGoals, deadline } = props;
+    const dispatch = useDispatch();
+    const handleDelete = id => {
+        axiosWithAuth().delete(`/campaigns/${id}`)
+            .then(response => {
+                dispatch({ type: 'GET_CAMPAIGNS' });
+                axiosWithAuth().get('/campaigns')
+                    .then(response => dispatch({ type: 'SUCCESS', payload: response.data }))
+                    .catch(error => dispatch({ type: 'FAILURE', payload: 'Something went wrong. Try again' }))
+            })
+            .catch(error => dispatch({ type: 'FAILURE', payload: 'Something went wrong. Try again' }))
+    }
     return (
         <div>
-            <h2>Your Campaigns</h2>
-            <div className='campaign-container'>
-            {props.campaigns.map(campaign => (
-                <div className='campaign-card' key={campaign.id}>
-                    <FaEdit onClick={() => history.push(`/update-campaign/${campaign.id}`)}/>
-                    <MdDelete onClick={() => props.deleteCampaign(campaign.id)}/>
-                    <h3>{campaign.title}</h3>
-                    <p>{campaign.location}</p>
-                    <p>{campaign.description}</p>
-                    <p>{campaign.species}</p>
-                    <p>{campaign.urgencyLevel}</p>
-                    <p>{campaign.fundingGoals}</p>
-                    <p>{campaign.deadline}</p>
-                </div>
-            ))}
+            <div className='campaign-card'>
+                <FaEdit onClick={() => history.push(`/update-campaign/${id}`)} />
+                <MdDelete onClick={() => handleDelete(id)} />
+                <h3>{title}</h3>
+                <p>{location}</p>
+                <p>{description}</p>
+                <p>{species}</p>
+                <p>{urgencyLevel}</p>
+                <p>{fundingGoals}</p>
+                <p>{deadline}</p>
             </div>
         </div>
     );
