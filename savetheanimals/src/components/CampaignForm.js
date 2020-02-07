@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import {addCampaign} from '../actions';
-import './CampaignForm.css';
+import axiosWithAuth from '../utils/AxiosWithAuth';
+
 
 const CampaignForm = props => {
     
     const history = useHistory();
+    const dispatch = useDispatch();
     const [campaign, setCampaign] = useState({
         title: '',
         location: '',
@@ -21,8 +22,6 @@ const CampaignForm = props => {
     //Need to put more input boxes in itemize
     //Need to add axios
 
-    const {addCampaign} = props;
-
     const handleChanges = e => {
         setCampaign({...campaign, [e.target.name]: e.target.value});
     };
@@ -30,9 +29,13 @@ const CampaignForm = props => {
     const handleSubmitForm = event =>
     {
         event.preventDefault();
-        addCampaign(campaign);
+        axiosWithAuth().post('/campaigns', campaign)
+        .then(history.push('/dashboard'))
+        .catch(error =>
+        {
+          dispatch({type: 'FAILURE', payload: 'Something went wrong. Try again'});
+        })
 
-        history.push('/dashboard');
     }
 
     return (
@@ -202,11 +205,5 @@ const CampaignForm = props => {
   );
 };
 
- const mapPropsToState = state => {
-  return {
-    isLoading: state.isLoading
-  };
-};
 
-
-export default connect(mapPropsToState, { addCampaign })(CampaignForm);
+export default CampaignForm;

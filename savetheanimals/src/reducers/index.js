@@ -1,5 +1,6 @@
 const initalState = {
     isLoading: false,
+    campaigns: null,
     error: '',
     isUpdating: false
 };
@@ -18,6 +19,7 @@ export const reducer = (state = initalState, action) =>
             return {
                 ...state,
                 isLoading: false,
+                campaigns: action.payload,
                 error: ''
             }
 
